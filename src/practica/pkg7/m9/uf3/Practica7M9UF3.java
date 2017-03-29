@@ -21,41 +21,61 @@ public class Practica7M9UF3 {
 
             String ruta = "prova_DAVID.txt"; //Modificar NOM amb el vostre nom
 
-            //PRIMERA PROVA
-            ClientFTP client = new ClientFTP(server, port, user, pass);
-
+//            //PRIMERA PROVA
+//            ClientFTP client = new ClientFTP(server, port, user, pass);
+//
+//            for (String arg : client.listar()) {
+//                System.out.println(arg);
+//            }
+//
+//            client.cerrarSesion();
+//            client.desconectarServidor();
+//
+//            //SEGONA PROVA
+//            ClientFTP client2 = new ClientFTP(server2, port, user2, pass2);
+//            
+//            for (String arg : client2.listar()) {
+//                System.out.println(arg);
+//            }
+//            
+//            client2.setDirectorio("pub");
+//            
+//            for (String arg : client2.listar()) {
+//                System.out.println(arg);
+//            }
+//            
+//            client2.activarEnvio();
+//            
+//            System.out.println("Pujant fitxer " + ruta);
+//            client2.enviarFichero(ruta);
+//            
+//            for (String arg : client2.listar()) {
+//                System.out.println(arg);
+//            }
+//            
+//            client2.cerrarSesion();            
+//            client2.desconectarServidor();
+             
+            //TERCERA PROVA
+            String ficheroDescarga = "fitxerDescarrega.txt";
+            
+            
+            ClientFTP client = new ClientFTP(server2, port, user2, pass2);
+            
+            //Listamos los directorios que hay
             for (String arg : client.listar()) {
                 System.out.println(arg);
             }
-
-            client.cerrarSesion();
+	
+            client.setDirectorio("pub");
+          
+            
+            client.descargarFichero(ficheroDescarga); 
+	
+            
+            client.cerrarSesion();            
             client.desconectarServidor();
 
-            //SEGONA PROVA
-            ClientFTP client2 = new ClientFTP(server2, port, user2, pass2);
-            
-            for (String arg : client2.listar()) {
-                System.out.println(arg);
-            }
-            
-            client2.setDirectorio("pub");
-            
-            for (String arg : client2.listar()) {
-                System.out.println(arg);
-            }
-            
-            client2.activarEnvio();
-            
-            System.out.println("Pujant fitxer " + ruta);
-            client2.enviarFichero(ruta);
-            
-            for (String arg : client2.listar()) {
-                System.out.println(arg);
-            }
-            
-            client2.cerrarSesion();            
-            client2.desconectarServidor();
-             
         } catch (IOException ex) {
             Logger.getLogger(Practica7M9UF3.class.getName()).log(Level.SEVERE, null, ex);
         }
