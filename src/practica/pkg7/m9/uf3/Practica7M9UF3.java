@@ -22,14 +22,14 @@ public class Practica7M9UF3 {
             String ruta = "prova_DAVID.txt"; //Modificar NOM amb el vostre nom
 
             //PRIMERA PROVA
-//            ClientFTP client = new ClientFTP(server, port, user, pass);
-//
-//            for (String arg : client.listar()) {
-//                System.out.println(arg);
-//            }
-//
-//            client.cerrarSesion();
-//            client.desconectarServidor();
+            ClientFTP client = new ClientFTP(server, port, user, pass);
+
+            for (String arg : client.listar()) {
+                System.out.println(arg);
+            }
+
+            client.cerrarSesion();
+            client.desconectarServidor();
 
             //SEGONA PROVA
             ClientFTP client2 = new ClientFTP(server2, port, user2, pass2);
