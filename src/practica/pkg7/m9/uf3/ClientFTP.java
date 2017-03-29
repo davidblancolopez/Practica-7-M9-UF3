@@ -87,7 +87,12 @@ public class ClientFTP {
 
     //pujar fitxer al servidor. BufferedInputStream, FileInputStream, enterLocalPassiveMode() i storeFile()
     public void enviarFichero(String ruta) throws FileNotFoundException, IOException {
-        ftp.storeFile(ruta, in);
+        ftp.enterLocalPassiveMode();
+        
+        FileInputStream fis = new FileInputStream(ruta);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        
+        ftp.storeFile(ruta, bis);
     }
 
     //tancar la sessió
