@@ -19,20 +19,24 @@ public class Practica7M9UF3 {
             String user2 = "u454499351.user";
             String pass2 = "user1234";
 
-            String ruta = "prova_NOM.txt"; //Modificar NOM amb el vostre nom
+            String ruta = "prova_DAVID.txt"; //Modificar NOM amb el vostre nom
 
             //PRIMERA PROVA
-            ClientFTP client = new ClientFTP(server, port, user, pass);
-
-            for (String arg : client.listar()) {
-                System.out.println(arg);
-            }
-
-            client.cerrarSesion();
-            client.desconectarServidor();
+//            ClientFTP client = new ClientFTP(server, port, user, pass);
+//
+//            for (String arg : client.listar()) {
+//                System.out.println(arg);
+//            }
+//
+//            client.cerrarSesion();
+//            client.desconectarServidor();
 
             //SEGONA PROVA
-            /*			ClientFTP client2 = new ClientFTP(server2, port, user2, pass2);
+            ClientFTP client2 = new ClientFTP(server2, port, user2, pass2);
+            
+            for (String arg : client2.listar()) {
+                System.out.println(arg);
+            }
             
             client2.setDirectorio("pub");
             
@@ -51,10 +55,9 @@ public class Practica7M9UF3 {
             
             client2.cerrarSesion();            
             client2.desconectarServidor();
-             */
+             
         } catch (IOException ex) {
-            Logger.getLogger(M09uf3FTP.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Practica7M9UF3.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    
+    }
 }
