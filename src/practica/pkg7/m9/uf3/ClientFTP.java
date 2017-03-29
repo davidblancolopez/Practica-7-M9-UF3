@@ -56,7 +56,7 @@ public class ClientFTP {
         if (ftp.isConnected()) {
             System.out.println(ftp.getReplyCode());
         }
-        
+
     }
 
     //cambiar a directori rebut per parametre amb changeWorkingDirectory()
@@ -68,8 +68,8 @@ public class ClientFTP {
     public List<String> listar() throws IOException {
         List<String> lista = new ArrayList<>(); // creamos una array List
         if (this.login) { // si es true
-            FTPFile [] lista2 = ftp.listFiles();
-            
+            FTPFile[] lista2 = ftp.listFiles();
+
             for (FTPFile i : lista2) {
                 lista.add(i.getName());
             }
@@ -99,5 +99,26 @@ public class ClientFTP {
     public void desconectarServidor() throws IOException {
         ftp.disconnect();
     }
-    
+
+    public void descargarFichero(String fichero) throws IOException {
+        try {
+            this.setDirectorio("/priv");
+
+            for (FTPFile file : ftp.listFiles()) {
+                if (file.getName().equals(fichero)) {
+                    ftp.enterLocalPassiveMode();
+
+                    File f = new File(file.getName());
+                    FileOutputStream fos = new FileOutputStream(f);
+                    OutputStream bos = new BufferedOutputStream(fos);
+
+                    ftp.retrieveFile(fichero, bos);
+                    bos.close();
+                    System.out.println("Se ha bajado el fichero: " + fichero);
+                }
+            }
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
 }
