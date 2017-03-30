@@ -89,6 +89,7 @@ public class ClientFTP {
     public void enviarFichero(String ruta) throws FileNotFoundException, IOException {
         ftp.enterLocalPassiveMode();
         
+        //Es puja l'arxiu.
         FileInputStream fis = new FileInputStream(ruta);
         BufferedInputStream bis = new BufferedInputStream(fis);
         
@@ -105,19 +106,36 @@ public class ClientFTP {
         ftp.disconnect();
     }
 
+    /**
+     * Metode per a descarregar l'arxiu.
+     * 
+     * @param fichero
+     * @throws IOException 
+     */
     public void descargarFichero(String fichero) throws IOException {
         try {
+            //Configurem el directori
             this.setDirectorio("/priv");
 
+            //Aquest bucle recorre tots els fitxers del directori
             for (FTPFile file : ftp.listFiles()) {
+                //Si el fitxer en el que esta coincideix amb el fitxer que hem indicat per descarregar,
+                //el descarrega.
                 if (file.getName().equals(fichero)) {
+                    
                     ftp.enterLocalPassiveMode();
 
+                    //Es crea l'arxiu que es dira com el que li hem indicat.
                     File f = new File(file.getName());
+                    
+                    //S'obre la connexió.
                     FileOutputStream fos = new FileOutputStream(f);
                     OutputStream bos = new BufferedOutputStream(fos);
 
+                    //Es rep l'arxiu.
                     ftp.retrieveFile(fichero, bos);
+                    
+                    //Es tanca el recurs.
                     bos.close();
                     System.out.println("Descarga fichero: " + fichero);
                 }
