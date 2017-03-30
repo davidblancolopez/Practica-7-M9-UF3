@@ -119,11 +119,11 @@ public class ClientFTP {
 
                     ftp.retrieveFile(fichero, bos);
                     bos.close();
-                    System.out.println("Se ha bajado el fichero: " + fichero);
+                    System.out.println("Descarga fichero: " + fichero);
                 }
             }
         } catch (IOException ex) {
-            System.out.println(ex);
+            Logger.getLogger(ClientFTP.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

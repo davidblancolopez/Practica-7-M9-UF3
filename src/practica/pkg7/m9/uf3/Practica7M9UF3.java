@@ -62,12 +62,16 @@ public class Practica7M9UF3 {
             
             ClientFTP client = new ClientFTP(server2, port, user2, pass2);
             
-            //Listamos los directorios que hay
+            
             for (String arg : client.listar()) {
                 System.out.println(arg);
             }
 	
             client.setDirectorio("pub");
+        
+            for (String arg : client.listar()) {
+                System.out.println(arg);
+            }
           
             
             client.descargarFichero(ficheroDescarga); 
